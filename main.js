@@ -55,7 +55,7 @@ startButton.addEventListener("click", function() {
     downloadButton.href = stream;
     preview.captureStream = preview.captureStream || preview.mozCaptureStream;
     return new Promise(resolve => preview.onplaying = resolve);
-  }).then(() => startRecording(preview.captureStream(), recordingTimeMS))
+  }).then(() => startRecording(preview.captureStream, recordingTimeMS))
   .then (recordedChunks => {
     let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
     recording.src = URL.createObjectURL(recordedBlob);
